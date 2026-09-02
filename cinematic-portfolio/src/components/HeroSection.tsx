@@ -52,19 +52,11 @@ export const HeroSection: React.FC = () => {
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.volume = 1.0;
-      videoRef.current.muted = true;
-      videoRef.current.play().catch(() => {});
     }
-
-    const hidePromptTimer = window.setTimeout(() => {
-      setShowSoundPrompt(false);
-    }, 1800);
-
-    return () => window.clearTimeout(hidePromptTimer);
   }, []);
 
   return (
-    <section className="relative h-screen min-h-[640px] w-full overflow-hidden bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black">
+    <section className="relative w-screen h-screen overflow-hidden bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black">
 
       {/* Landing Overlay — dismissed on click; also unmutes the hero video */}
       <AnimatePresence>
@@ -83,7 +75,7 @@ export const HeroSection: React.FC = () => {
               playsInline
               preload="auto"
               disablePictureInPicture
-              className="absolute inset-0 h-full w-full scale-105 object-cover pointer-events-none select-none"
+              className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
             >
               <source src="/videos/landing.mp4" type="video/mp4" />
             </video>
@@ -113,20 +105,19 @@ export const HeroSection: React.FC = () => {
       </AnimatePresence>
 
       {/* ================= 2. FIXED VIDEO LAYER ================= */}
-      <div className="fixed inset-0 z-0 overflow-hidden bg-black pointer-events-none">
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-black flex items-center justify-end sm:justify-end">
         <video
           ref={videoRef}
           autoPlay
           muted
           playsInline
-          loop
-          className="absolute inset-0 h-full w-full object-cover md:left-auto md:right-0 md:h-screen md:w-auto md:max-w-none md:object-contain md:origin-right md:scale-[0.98] lg:scale-100"
+          className="h-full w-full object-cover sm:h-screen sm:w-auto sm:max-w-none sm:object-contain sm:origin-right sm:scale-95 md:scale-[0.98] lg:scale-100"
         >
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
 
         {/* Seamless Soft Left Edge Blend */}
-        <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-black via-black/80 to-transparent md:w-1/2 pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-black via-black/85 to-transparent sm:w-1/2 pointer-events-none" />
 
         {/* ================= 3. ANIMATED WATERMARK EMBLEM ================= */}
         <div className="absolute bottom-6 right-6 lg:bottom-10 lg:right-12 pointer-events-none flex items-center justify-center z-10">
@@ -156,13 +147,13 @@ export const HeroSection: React.FC = () => {
       </div>
 
       {/* ================= 4. CONTENT LAYER ================= */}
-      <div className="relative z-10 flex flex-col justify-between h-full w-full px-6 sm:px-12 lg:px-16 pt-6 pb-8 pointer-events-none">
+      <div className="relative z-10 flex flex-col justify-between h-full w-full px-4 sm:px-12 lg:px-16 pt-4 sm:pt-6 pb-6 sm:pb-8 pointer-events-none">
         
         {/* Navigation Bar */}
         <header className="relative flex items-center justify-between w-full pointer-events-auto">
           <a
             href="#"
-            className="text-xs sm:text-sm font-semibold tracking-[0.35em] uppercase text-[#EAD8C7] hover:opacity-75 transition-opacity"
+            className="text-[10px] sm:text-sm font-semibold tracking-[0.22em] sm:tracking-[0.35em] uppercase text-[#EAD8C7] hover:opacity-75 transition-opacity"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             JASWANTH REDDY.
@@ -188,7 +179,7 @@ export const HeroSection: React.FC = () => {
           {/* Right Action */}
           <a
             href="#contact"
-            className="group flex items-center space-x-2 text-[11px] tracking-[0.24em] font-light uppercase py-2 px-4 border border-[#8C6D4F]/50 hover:border-[#D4AF37] text-[#EAD8C7] transition-all duration-300 backdrop-blur-sm ml-auto md:ml-0"
+            className="group flex items-center space-x-2 text-[9px] sm:text-[11px] tracking-[0.12em] sm:tracking-[0.24em] font-light uppercase py-2 px-3 sm:px-4 border border-[#8C6D4F]/50 hover:border-[#D4AF37] text-[#EAD8C7] transition-all duration-300 backdrop-blur-sm ml-auto md:ml-0"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             <span>LET&apos;S TALK</span>
@@ -211,7 +202,7 @@ export const HeroSection: React.FC = () => {
             {/* Massive Condensed Headline */}
             <motion.div variants={fadeUpVariants} className="relative mb-3.5 select-none">
               <h1
-                className="text-6xl sm:text-7xl md:text-8xl lg:text-[7.2rem] xl:text-[7.8rem] tracking-tight uppercase leading-[0.83]"
+                className="text-[3.2rem] leading-[0.82] sm:text-7xl md:text-8xl lg:text-[7.2rem] xl:text-[7.8rem] tracking-tight uppercase"
                 style={{ fontFamily: "'Bebas Neue', sans-serif" }}
               >
                 <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#D5CBC0] to-[#605448] drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)]">
@@ -241,7 +232,7 @@ export const HeroSection: React.FC = () => {
             {/* 3-Line Description */}
             <motion.div
               variants={fadeUpVariants}
-              className="text-xs sm:text-sm md:text-[13.5px] font-light text-[#A8988B] leading-[1.8] tracking-wide max-w-lg mb-6 space-y-1"
+              className="text-[11px] sm:text-sm md:text-[13.5px] font-light text-[#A8988B] leading-[1.6] sm:leading-[1.8] tracking-wide max-w-lg mb-6 space-y-1"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               <p>
@@ -254,7 +245,7 @@ export const HeroSection: React.FC = () => {
             {/* CTA Buttons */}
             <motion.div
               variants={fadeUpVariants}
-              className="flex flex-row items-center gap-4 sm:gap-6"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               {/* Explore My Work CTA */}
