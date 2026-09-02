@@ -206,15 +206,21 @@ export const HeroSection: React.FC = () => {
                 style={{ fontFamily: "'Bebas Neue', sans-serif" }}
               >
                 <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#D5CBC0] to-[#605448] drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)]">
-                  I ENGINEER
+                  <span className="inline-block rounded-[2px] bg-black/15 px-[0.08em]">
+                    I ENGINEER
+                  </span>
                 </span>
 
                 <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#F7E7C4] via-[#C99E5D] to-[#543B1A] drop-shadow-[0_8px_25px_rgba(201,158,93,0.35)]">
-                  INTELLIGENT
+                  <span className="inline-block rounded-[2px] bg-black/15 px-[0.08em]">
+                    INTELLIGENT
+                  </span>
                 </span>
 
                 <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#DFBE8A] via-[#9B7640] to-[#342410] drop-shadow-[0_10px_30px_rgba(155,118,64,0.4)]">
-                  AI SYSTEMS
+                  <span className="inline-block rounded-[2px] bg-black/15 px-[0.08em]">
+                    AI SYSTEMS
+                  </span>
                 </span>
               </h1>
             </motion.div>
@@ -225,7 +231,9 @@ export const HeroSection: React.FC = () => {
                 className="text-[10px] sm:text-[11px] md:text-xs font-normal tracking-[0.28em] uppercase text-[#C4B29E]"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                SOFTWARE ENGINEER <span className="text-[#8C6D4F] mx-1">•</span> AI & AUTOMATION <span className="text-[#8C6D4F] mx-1">•</span> FULL STACK DEVELOPER
+                <span className="inline-block rounded-[2px] bg-black/15 px-1">
+                  SOFTWARE ENGINEER <span className="text-[#8C6D4F] mx-1">•</span> AI & AUTOMATION <span className="text-[#8C6D4F] mx-1">•</span> FULL STACK DEVELOPER
+                </span>
               </p>
             </motion.div>
 
@@ -236,9 +244,13 @@ export const HeroSection: React.FC = () => {
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               <p>
-                I engineer backend AI services, automation pipelines, and scalable platforms.
+                <span className="inline-block rounded-[2px] bg-black/15 px-1">
+                  I engineer backend AI services, automation pipelines, and scalable platforms.
+                </span>
                 <br />
-                Where AI meets enterprise systems, and code transforms complex operations into impact.
+                <span className="inline-block rounded-[2px] bg-black/15 px-1">
+                  Where AI meets enterprise systems, and code transforms complex operations into impact.
+                </span>
               </p>
             </motion.div>
 
