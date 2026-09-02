@@ -52,11 +52,19 @@ export const HeroSection: React.FC = () => {
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.volume = 1.0;
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(() => {});
     }
+
+    const hidePromptTimer = window.setTimeout(() => {
+      setShowSoundPrompt(false);
+    }, 1800);
+
+    return () => window.clearTimeout(hidePromptTimer);
   }, []);
 
   return (
-    <section className="relative w-screen h-screen overflow-hidden bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black">
+    <section className="relative h-screen min-h-[640px] w-full overflow-hidden bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black">
 
       {/* Landing Overlay — dismissed on click; also unmutes the hero video */}
       <AnimatePresence>
@@ -75,7 +83,7 @@ export const HeroSection: React.FC = () => {
               playsInline
               preload="auto"
               disablePictureInPicture
-              className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+              className="absolute inset-0 h-full w-full scale-105 object-cover pointer-events-none select-none"
             >
               <source src="/videos/landing.mp4" type="video/mp4" />
             </video>
@@ -105,19 +113,20 @@ export const HeroSection: React.FC = () => {
       </AnimatePresence>
 
       {/* ================= 2. FIXED VIDEO LAYER ================= */}
-      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-black flex items-center justify-end">
+      <div className="fixed inset-0 z-0 overflow-hidden bg-black pointer-events-none">
         <video
           ref={videoRef}
           autoPlay
           muted
           playsInline
-          className="h-screen w-auto max-w-none object-contain origin-right scale-95 md:scale-[0.98] lg:scale-100"
+          loop
+          className="absolute inset-0 h-full w-full object-cover md:left-auto md:right-0 md:h-screen md:w-auto md:max-w-none md:object-contain md:origin-right md:scale-[0.98] lg:scale-100"
         >
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
 
         {/* Seamless Soft Left Edge Blend */}
-        <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-black via-black/85 to-transparent pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-black via-black/80 to-transparent md:w-1/2 pointer-events-none" />
 
         {/* ================= 3. ANIMATED WATERMARK EMBLEM ================= */}
         <div className="absolute bottom-6 right-6 lg:bottom-10 lg:right-12 pointer-events-none flex items-center justify-center z-10">
