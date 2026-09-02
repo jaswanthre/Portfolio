@@ -117,7 +117,7 @@ export const HeroSection: React.FC = () => {
         </video>
 
         {/* Seamless Soft Left Edge Blend */}
-        <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-black via-black/85 to-transparent sm:w-1/2 pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-0 bg-gradient-to-r from-black/20 via-black/30 to-transparent sm:w-1/2 sm:from-black sm:via-black/85 sm:to-transparent pointer-events-none" />
 
         {/* ================= 3. ANIMATED WATERMARK EMBLEM ================= */}
         <div className="absolute bottom-6 right-6 lg:bottom-10 lg:right-12 pointer-events-none flex items-center justify-center z-10">
